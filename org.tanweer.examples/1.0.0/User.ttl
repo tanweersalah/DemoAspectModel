@@ -8,7 +8,7 @@
 @prefix : <urn:samm:org.tanweer.examples:1.0.0#> .
 
 :User a samm:Aspect ;
-   samm:preferredName "User"@en ;
+   samm:preferredName "Users"@en ;
    samm:description "Aspect for a User Model."@en ;
    samm:properties ( :name :age :isStudent :languages :address ) ;
    samm:operations ( ) ;
