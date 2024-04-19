@@ -1,0 +1,86 @@
+@prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
+@prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
+@prefix samm-e: <urn:samm:org.eclipse.esmf.samm:entity:2.1.0#> .
+@prefix unit: <urn:samm:org.eclipse.esmf.samm:unit:2.1.0#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:samm:org.tanweer.examples:1.0.0#> .
+
+:User a samm:Aspect ;
+   samm:preferredName "User"@en ;
+   samm:description "Aspect for a User Model."@en ;
+   samm:properties ( :name :age :isStudent :languages :address ) ;
+   samm:operations ( ) ;
+   samm:events ( ) .
+
+:name a samm:Property ;
+   samm:preferredName "Name"@en ;
+   samm:description "Name of the user."@en ;
+   samm:characteristic samm-c:Text ;
+   samm:exampleValue "Tanweer" .
+
+:age a samm:Property ;
+   samm:preferredName "Age"@en ;
+   samm:description "Age of the user"@en ;
+   samm:characteristic :AgeCharacteristic ;
+   samm:exampleValue 25 .
+
+:isStudent a samm:Property ;
+   samm:preferredName "Is Student"@en ;
+   samm:description "Define whether the user is student or not."@en ;
+   samm:characteristic samm-c:Boolean ;
+   samm:exampleValue true .
+
+:languages a samm:Property ;
+   samm:preferredName "Languages"@en ;
+   samm:description "Languages know by the user."@en ;
+   samm:characteristic :LanguageCharacteristic ;
+   samm:exampleValue "English, German" .
+
+:address a samm:Property ;
+   samm:preferredName "Address"@en ;
+   samm:description "Address of the user."@en ;
+   samm:characteristic :AddressCharacteristic .
+
+:AgeCharacteristic a samm-c:Quantifiable ;
+   samm:preferredName "Age Characteristic"@en ;
+   samm:dataType xsd:integer .
+
+:LanguageCharacteristic a samm-c:List ;
+   samm:dataType xsd:string .
+
+:AddressCharacteristic a samm:Characteristic ;
+   samm:preferredName "Address Characteristic"@en ;
+   samm:description "Encapsulate the address information of the user."@en ;
+   samm:dataType :AddressEntity .
+
+:AddressEntity a samm:Entity ;
+   samm:preferredName "Address Entity"@en ;
+   samm:description "Address information of the user."@en ;
+   samm:properties ( :street :city :state :zip ) .
+
+:street a samm:Property ;
+   samm:preferredName "Street"@en ;
+   samm:description "Street information of the user address"@en ;
+   samm:characteristic samm-c:Text ;
+   samm:exampleValue "papitzer strasse" .
+
+:city a samm:Property ;
+   samm:preferredName "City"@en ;
+   samm:description "City information of the user address"@en ;
+   samm:characteristic samm-c:Text ;
+   samm:exampleValue "cottbus" .
+
+:state a samm:Property ;
+   samm:preferredName "State"@en ;
+   samm:description "State information of the user address"@en ;
+   samm:characteristic samm-c:Text ;
+   samm:exampleValue "berlin" .
+
+:zip a samm:Property ;
+   samm:preferredName "Zip"@en ;
+   samm:description "Zip information of the user address"@en ;
+   samm:characteristic samm-c:Text ;
+   samm:exampleValue "03046" .
+
